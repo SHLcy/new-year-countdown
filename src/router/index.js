@@ -1,15 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import HomeContainer from '../components/HomeContainer'
+import MemberContainer from '../components/MemberContainer'
+import ShoppingContainer from '../components/ShoppingContainer'
+import SearchContainer from '../components/SearchContainer'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }
-  ]
+    {path: '/', redirect: '/home'},
+    {path: '/home', component: HomeContainer},
+    {path: '/member', component: MemberContainer},
+    {path: '/shopping', component: ShoppingContainer},
+    {path: '/search', component: SearchContainer}
+  ],
+  linkActiveClass: 'mui-active'
 })
