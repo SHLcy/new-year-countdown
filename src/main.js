@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import { Header, Tabbar, TabItem, Swipe, SwipeItem } from 'mint-ui'
+import { Header, Tabbar, TabItem, Swipe, SwipeItem, Button } from 'mint-ui'
 import './lib/mui/css/mui.css'
 import './lib/mui/fonts/mui.ttf'
 import './lib/mui/js/mui.js'
@@ -15,6 +15,8 @@ Vue.component(Tabbar.name, Tabbar)
 Vue.component(TabItem.name, TabItem)
 Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)
+Vue.component(Button.name, Button)
+
 Vue.config.productionTip = false
 
 // 定义全局时间过滤器

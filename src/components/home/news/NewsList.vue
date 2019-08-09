@@ -2,14 +2,17 @@
   <div class="newsWrapper">
     <ul class="mui-table-view">
       <li class="mui-table-view-cell mui-media" v-for="item in newsList" :key="item.id">
-        <a :href="item.weburl">
+        <router-link :to="'/home/newsinfo/'+item.id">
+        <!-- 缩略图 -->
           <img class="mui-media-object mui-pull-left" :src="item.pic">
+          <!-- 大标题 -->
           <div class="mui-media-body newsTitle">{{item.title}}</div>
+          <!-- 小标题 -->
           <div class="small">
             <p class="small-left">发表时间：{{item.time}}& nbsp& nbsp& nbsp& nbsp</p>
             <p class="small-right">{{item.src}}</p>
           </div>
-        </a>
+        </router-link>
       </li>
     </ul>
     </div>
