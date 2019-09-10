@@ -1,11 +1,15 @@
 <template>
-    <div>shopping</div>
+    <shopping-list></shopping-list>
 </template>
 
 <script>
+import ShoppingList from './shopping/shopping'
 export default {
 /* eslint-disable */ 
-    name: 'ShoppingContainer'
+    name: 'ShoppingContainer',
+    components:{
+      ShoppingList
+    }
 }
 </script>
 

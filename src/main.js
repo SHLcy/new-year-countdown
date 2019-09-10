@@ -8,6 +8,7 @@ import './lib/mui/css/mui.css'
 import './lib/mui/fonts/mui.ttf'
 import './lib/mui/js/mui.js'
 import './lib/mui/css/icons-extra.css'
+import store from './components/store/store'
 // 时间格式化插件：moment
 import moment from 'moment'
 Vue.component(Header.name, Header)
@@ -16,7 +17,6 @@ Vue.component(TabItem.name, TabItem)
 Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)
 Vue.component(Button.name, Button)
-
 Vue.config.productionTip = false
 
 // 定义全局时间过滤器
@@ -28,5 +28,6 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  store
 })
