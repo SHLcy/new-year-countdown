@@ -17,14 +17,19 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
+import newsInfo from './newsinfo.json'
 // 引入评论标签
 import comment from '@/components/comment/comment'
 export default {
   name: 'NewsInfo',
   mounted () {
     // 发起axios请求新闻数据
-    this.getNewsInfo()
+    // this.getNewsInfo()
+    let id = parseInt(this.id) - 1
+    this.content = newsInfo.news[id].content
+    this.title = newsInfo.news[id].title
+    this.time = newsInfo.news[id].time
   },
   components: {
     comment
@@ -40,21 +45,21 @@ export default {
   },
   methods: {
     // 发送请求函数
-    getNewsInfo () {
-      axios.get('/api/newsinfo.json').then(this.getNewsInfoSuc)
-    },
+    // getNewsInfo () {
+    //   axios.get('../../../static/mock/newsinfo.json').then(this.getNewsInfoSuc)
+    // },
     // 请求成功回调函数
-    getNewsInfoSuc (res) {
-      let data = res.data.news
-      for (let i = 0; i < data.length; i++) {
-        if (data[i].id === this.id) {
-          this.content = data[i].content
-          this.title = data[i].title
-          this.time = data[i].time
-          return
-        }
-      }
-    }
+    // getNewsInfoSuc (res) {
+    //   let data = res.data.news
+    //   for (let i = 0; i < data.length; i++) {
+    //     if (data[i].id === this.id) {
+    //       this.content = data[i].content
+    //       this.title = data[i].title
+    //       this.time = data[i].time
+    //       return
+    //     }
+    //   }
+    // }
   }
 }
 

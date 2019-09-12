@@ -16,9 +16,10 @@
 // 引入轮播图
 import HomeSwiper from "./home/HomeSwiper";
 // 引入axios
-import axios from "axios";
+// import axios from "axios";
 // 引入icons
 import HomeIcons from "./home/HomeIcons";
+import images from './images.json'
 export default {
   /* eslint-disable */
 
@@ -35,13 +36,13 @@ export default {
   },
   methods: {
     // axios获取轮播图数据
-    getImg() {
-      axios.get("/api/images.json").then(this.getImgSuc);
-    },
+    // getImg() {
+    //   axios.get("../static/mock/images.json").then(this.getImgSuc);
+    // },
     // 获取数据成功返回结果
-    getImgSuc(res) {
-      this.swiperList = res.data.data.swiperList;
-    },
+    // getImgSuc(res) {
+    //   this.swiperList = res.data.data.swiperList;
+    // },
     // 从子组件得到图片wrapper的高度
     getHeightFromChild(data) {
       this.imgHeight = data;
@@ -49,7 +50,9 @@ export default {
   },
   mounted() {
     // 页面初始化时，获取轮播图数据
-    this.getImg();
+    // this.getImg();
+    this.swiperList = images.data.swiperList
+    console.log(this.swiperList)
     //  将从子组件获得的高度给父组件
     document.getElementById("imgs").style.height = this.imgHeight + "px";
   }

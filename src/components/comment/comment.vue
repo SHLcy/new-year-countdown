@@ -16,7 +16,8 @@
 
 <script>
 /* eslint-disable */
-import axios from 'axios'
+// import axios from 'axios'
+import newscomment from './newscomment.json'
 // 引入Toast
 import { Toast } from 'mint-ui'
 export default {
@@ -36,13 +37,13 @@ export default {
   },
   props: [ 'id' ],
   methods: {
-    // axios发送请求
+    // // axios发送请求
     getComment () {
-      axios.get('/api/newscomment.json').then(this.getCommentsSuc)
-    },
-    // axios请求成功回调函数
-    getCommentsSuc (res) {
-      this.comments = res.data.comments
+    //   axios.get('../../static/mock/newscomment.json').then(this.getCommentsSuc)
+    // },
+    // // axios请求成功回调函数
+    // getCommentsSuc (res) {
+      this.comments = newscomment.comments
     },
     // 发送评论
     sendComment () {

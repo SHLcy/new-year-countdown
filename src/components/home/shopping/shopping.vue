@@ -19,7 +19,8 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
+import goodsList from './goodList.json'
 export default {
   name: 'shopping',
   data () {
@@ -28,17 +29,18 @@ export default {
     }
   },
   mounted () {
-    this.getGoodList()
+    // this.getGoodList()
+    this.goodList = goodsList.list
   },
   methods: {
-    getGoodList () {
-      axios.get('/api/goodList.json').then(
-        (res) => {
-          this.goodList = res.data.list
-          console.log(this.goodList)
-        }
-      )
-    }
+    // getGoodList () {
+    //   axios.get('../../../static/mock/goodList.json').then(
+    //     (res) => {
+    //       this.goodList = res.data.list
+    //       console.log(this.goodList)
+    //     }
+    //   )
+    // }
   }
 }
 </script>

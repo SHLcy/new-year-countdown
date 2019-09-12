@@ -11,7 +11,8 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
+import movieDetail from './movieDetail.json'
 export default {
   name: 'ImgDetail',
   data () {
@@ -20,15 +21,17 @@ export default {
     }
   },
   mounted () {
-    this.getMovieDetail()
+    // this.getMovieDetail()
+    this.movieDetailData = movieDetail
+    console.log(this.movieDetailData)
   },
   methods: {
-    getMovieDetail () {
-      axios.get('/api/movieDetail.json').then(this.getMovieDetailSuc)
-    },
-    getMovieDetailSuc (res) {
-      this.movieDetailData = res.data
-    }
+    // getMovieDetail () {
+    //   axios.get('../../../static/mock/movieDetail.json').then(this.getMovieDetailSuc)
+    // },
+    // getMovieDetailSuc (res) {
+    //   this.movieDetailData = res.data
+    // }
   }
 }
 </script>

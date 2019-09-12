@@ -17,7 +17,8 @@
 
 <script>
 /* eslint-disable */
-import axios from 'axios'
+// import axios from 'axios'
+import movies from './movies.json'
 import mui from '@/lib/mui/js/mui.js'
 export default {
   name: 'ImgShare',
@@ -30,7 +31,9 @@ export default {
     }
   },
   mounted () {
-    this.getMoviesData()
+    // this.getMoviesData()
+    this.moviesData = movies.list
+    console.log(this.moviesData)
     // 操作元素最好在mounted内操作
     mui('.mui-scroll-wrapper').scroll({
     deceleration: 0.0005, //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
@@ -38,13 +41,13 @@ export default {
 })
   },
   methods: {
-    getMoviesData () {
-      axios.get('/api/movies.json').then(this.getMoviesDataSuc)
-    },
-    getMoviesDataSuc (res) {
-      console.log(res.data.list)
-      this.moviesData = res.data.list
-    }
+    // getMoviesData () {
+    //   axios.get('../../../static/mock/movies.json').then(this.getMoviesDataSuc)
+    // },
+    // getMoviesDataSuc (res) {
+    //   console.log(res.data.list)
+    //   this.moviesData = res.data.list
+    // }
   }
 }
 </script>
