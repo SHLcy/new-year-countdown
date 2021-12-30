@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+canvas{
+  background-color: rgba(0, 0, 0, 1);
+  opacity: .5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left bottom;
+
+}
+body {
+  background-image: url('https://images.unsplash.com/photo-1467810563316-b5476525c0f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1349&q=80');
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Add a dark overlay */
+
+body * {
+  z-index: 1;
+}
+
+h1 {
+  font-size: 60px;
+  margin: -80px 0 40px;
+  opacity: 0;
+  z-index: 100;
+  height: 108px;
+}
+
+.year {
+  font-size: 10rem;
+  opacity: 0.2;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.countdown {
+  display: flex;
+  transform: scale(2);
+  opacity: 0;
+  z-index: 100;
+}
+
+.time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
+}
+
+.time h2 {
+  margin: 0 0 5px;
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 45px;
+  }
+
+  .time {
+    margin: 5px;
+  }
+
+  .time h2 {
+    font-size: 12px;
+    margin: 0;
+  }
+
+  .time small {
+    font-size: 10px;
+  }
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0; /*初始状态 透明度为0*/
+
+  }
+
+  50% {
+    opacity: 1; /*中间状态 透明度为0*/
+
+  }
+
+  100% {
+    opacity: 0; /*结尾状态 透明度为1*/
+
+  }
+}
+@-webkit-keyframes fadeIn2 {
+  0% {
+    opacity: 0; /*初始状态 透明度为0*/
+
+  }
+
+  50% {
+    opacity: 1; /*中间状态 透明度为0*/
+
+  }
+
+  100% {
+    opacity: 1; /*结尾状态 透明度为1*/
+
+  }
+}
+.h1Animation {
+  -webkit-animation-name: fadeIn; /*动画名称*/
+
+  -webkit-animation-duration: 6s; /*动画持续时间*/
+
+  -webkit-animation-iteration-count: infinite; /*动画次数*/
+
+  -webkit-animation-delay: 0s; /*延迟时间*/
+  /*animation-fill-mode: forwards;*/
+}
+.countdownAnimation{
+  -webkit-animation-name: fadeIn2; /*动画名称*/
+
+  -webkit-animation-duration: 3s; /*动画持续时间*/
+
+  -webkit-animation-iteration-count: 1; /*动画次数*/
+
+  -webkit-animation-delay: 3s; /*延迟时间*/
+  animation-fill-mode: forwards;
+
+}
+
+.button {
+  background: #3498db;
+  width: 180px;
+  padding: 4px 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 3px;
+  z-index: 1000;
+}
+
+p {
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFF;
+  user-select: none;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 10%;
+  border-radius: 50%;
+  background-color: #f1c40f;
+  opacity: 0.4;
+  bottom: -30px;
+}

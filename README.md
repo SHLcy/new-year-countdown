@@ -1,21 +1,23 @@
-# project1
+# RealTime-NewYear-Countdown
 
-> A Vue.js project
+## New Year Countdown
 
-## Build Setup
+- Landing page that counts down from the current date to the next new year
 
-``` bash
-# install dependencies
-npm install
+## Project Specifications
 
-# serve with hot reload at localhost:8080
-npm run dev
+- Create landing page with HTML/CSS;<br>
+- Calculate the days, hours, mins and seconds to the new year;<br>
+- Insert values into the DOM;<br>
+- Show a spinner right before loading the countdown;<br>
+- Show the coming year in the background ;<br>
 
-# build for production with minification
-npm run build
+## Project Preview 
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+- Click Below Link <br><br>
+[Click View Project](https://mian-ali.github.io/RealTime-NewYear-Countdown/) <br>
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+#### Project Broswer URL<br>
+https://mian-ali.github.io/RealTime-NewYear-Countdown/
+
+
