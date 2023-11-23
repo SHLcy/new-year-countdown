@@ -216,7 +216,7 @@ function onLoad() {
     document.getElementById('countdown').className = 'countdown countdownAnimation'
     // document.getElementById('btn').style.display = 'none'
     startFirework()
-    autoPlayAudio1()
+    // autoPlayAudio1()
 
 }
 
