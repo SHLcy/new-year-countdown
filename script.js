@@ -198,27 +198,25 @@ function startSnow () {
 
 function onLoad() {
   startSnow()
-  document.getElementById('btn').onclick = () => {
+  // document.getElementById('btn').onclick = () => {
+
+  //   // startMusic()
+  // }
   document.getElementById('bgmusic').play();
   autoPlayAudio1()
   const h1Box = document.getElementsByTagName('h1')[0]
     h1Box.className = 'h1Animation'
     setInterval(() => {
-      console.log(h1Box.innerHTML.startsWith('Lcy'))
       if (h1Box.innerHTML.startsWith('Lcy')) {
-        h1Box.innerHTML = '新年快乐'
-      }else if (h1Box.innerHTML.startsWith('新年快乐')) {
-        h1Box.innerHTML = '明けましておめでとう'
-      } else if (h1Box.innerHTML.startsWith('明けましておめでとう')) {
-        h1Box.innerHTML = 'Lcy Wish You A Happy New Year'
+        h1Box.innerHTML = 'lcy祝您新年快乐'
+      }else if (h1Box.innerHTML.startsWith('lcy祝您新年快乐')) {
+        h1Box.innerHTML = 'Lcy wish you a happy new year'
       }
     }, 6000)
     document.getElementById('countdown').className = 'countdown countdownAnimation'
-    document.getElementById('btn').style.display = 'none'
+    // document.getElementById('btn').style.display = 'none'
     startFirework()
-    // startMusic()
-  }
-  autoPlayAudio1()
+    autoPlayAudio1()
 
 }
 
