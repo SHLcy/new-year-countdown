@@ -5,12 +5,9 @@ const seconds = document.getElementById('seconds');
 const countdown = document.getElementById('countdown');
 const year = document.getElementById('year');
 const currentYear = new Date().getFullYear();
-
 const newYearTime = new Date(`January 01 ${currentYear + 1} 00:00:00`);
-
 // Set background year
 year.innerText = currentYear + 1;
-
 // Update countdown time
 function updateCountdown() {
   const currentTime = new Date();
@@ -51,12 +48,74 @@ window.requestAnimationFrame =
       callback()
     };
 
-
-
 var canvas, ctx, w, h, particles = [], probability = 0.04,
     xPoint, yPoint;
 
-
+function startFirework () {
+  const container = document.body
+  const fireworks = new Fireworks.Fireworks(container, {
+      autoresize: true,
+      opacity: 0.2,
+      acceleration: 1,
+      friction: 0.97,
+      gravity: 1.5,
+      particles: 100,
+      traceLength: 3,
+      traceSpeed: 3,
+      explosion: 8,
+      intensity: 30,
+      flickering: 50,
+      lineStyle: 'square',
+      hue: {
+          min: 0,
+          max: 345
+      },
+      delay: {
+          min: 30,
+          max: 60
+      },
+      rocketsPoint: {
+          min: 50,
+          max: 50
+      },
+      lineWidth: {
+          explosion: {
+          min: 1,
+          max: 4
+          },
+          trace: {
+          min: 0.1,
+          max: 1
+          }
+      },
+      brightness: {
+          min: 50,
+          max: 80
+      },
+      decay: {
+          min: 0.015,
+          max: 0.03
+      },
+      mouse: {
+          click: false,
+          move: false,
+          max: 1
+      },
+      sound:{
+          enabled: true,
+          files: [
+      'explosion0.mp3',
+      'explosion1.mp3',
+      'explosion2.mp3'
+    ],
+           volume: {
+      min: 4,
+      max: 8
+    }
+      }
+      })
+  fireworks.start()
+}
 
 function startSnow () {
   //canvas init
@@ -160,13 +219,6 @@ function onLoad() {
   autoPlayAudio1()
 
 }
-function startFirework () {
-  canvas = document.getElementById("canvas");
-  ctx = canvas.getContext("2d");
-  resizeCanvas();
-  // audioAutoPlay()
-    window.requestAnimationFrame(updateWorld);
-}
 
 function resizeCanvas() {
   if (!!canvas) {
@@ -175,131 +227,3 @@ function resizeCanvas() {
   }
 }
 
-function updateWorld() {
-  update();
-  paint();
-  window.requestAnimationFrame(updateWorld);
-}
-
-function update() {
-  if (particles.length < 100 && Math.random() < probability) {
-    createFirework();
-  }
-  var alive = [];
-  for (var i=0; i<particles.length; i++) {
-    if (particles[i].move()) {
-      alive.push(particles[i]);
-    }
-  }
-  particles = alive;
-}
-
-function paint() {
-  ctx.globalCompositeOperation = 'source-over';
-  ctx.fillStyle = "rgba(0,0,0,0.2)";
-  ctx.fillRect(0, 0, w, h);
-  ctx.globalCompositeOperation = 'lighter';
-  for (var i=0; i<particles.length; i++) {
-      particles[i].draw(ctx);
-  }
-}
-
-function createFirework() {
-  xPoint = Math.random()*(w-200)+100;
-  yPoint = Math.random()*(h-700)+100;
-  var nFire = Math.random()*50+100;
-  var c = "rgb("+(~~(Math.random()*200+55))+","
-      +(~~(Math.random()*200+55))+","+(~~(Math.random()*200+55))+")";
-  for (var i=0; i<nFire; i++) {
-    var particle = new Particle();
-    particle.color = c;
-    var vy = Math.sqrt(25-particle.vx*particle.vx);
-    if (Math.abs(particle.vy) > vy) {
-      particle.vy = particle.vy>0 ? vy: -vy;
-    }
-    particles.push(particle);
-  }
-}
-
-function Particle() {
-  this.w = this.h = Math.random()*4+1;
-
-  this.x = xPoint-this.w/2;
-  this.y = yPoint-this.h/2;
-
-  this.vx = (Math.random()-0.5)*10;
-  this.vy = (Math.random()-0.5)*10;
-
-  this.alpha = Math.random()*.5+.5;
-
-  this.color;
-}
-
-Particle.prototype = {
-  gravity: 0.05,
-  move: function () {
-    this.x += this.vx / 2;
-    this.vy += this.gravity;
-    this.y += this.vy / 2;
-    this.alpha -= 0.005;
-    return !(this.x <= -this.w || this.x >= screen.width ||
-        this.y >= screen.height ||
-        this.alpha <= 0);
-  },
-  draw: function (c) {
-    c.save();
-    c.beginPath();
-    c.translate(this.x+this.w/2, this.y+this.h/2);
-    c.arc(0, 0, this.w, 0, Math.PI*2);
-    c.fillStyle = this.color;
-    c.globalAlpha = this.alpha;
-    c.closePath();
-    c.fill();
-    c.restore();
-  }
-}
-
-let time = 0
-function startMusic(e) {
-  console.log(e)
-  if (time === 0) {
-    const contextClass = window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.msAudioContext;
-    console.log(contextClass)
-    try {
-      var context = new contextClass();
-      var source = null;
-      var audioBuffer = null;
-      function playSound() {
-        source = context.createBufferSource();
-        source.buffer = audioBuffer;
-        source.loop = true;
-        source.connect(context.destination);
-        source.start(0); //立即播放
-      }
-      function initSound(arrayBuffer) {
-        context.decodeAudioData(arrayBuffer, function (buffer) { //解码成功时的回调函数
-          audioBuffer = buffer;
-          playSound();
-        }, function (e) { //解码出错时的回调函数
-          console.log('404', e);
-        });
-      }
-      function loadAudioFile(url) {
-        var xhr = new XMLHttpRequest(); //通过XHR下载音频文件
-        xhr.open('GET', url, true);
-        xhr.responseType = 'arraybuffer';
-        xhr.onload = function (e) { //下载完成
-          initSound(this.response);
-        };
-        xhr.send();
-      }
-      //这里用来存储背景音乐的路径
-      loadAudioFile('./bacc.mp3');
-    } catch (e) {
-      console.log('无法找到音乐！');
-    }
-    time++
-  }
-
-
-}
