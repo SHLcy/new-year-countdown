@@ -109,8 +109,8 @@ function startFirework () {
       'explosion2.mp3'
     ],
            volume: {
-      min: 4,
-      max: 8
+      min: 50,
+      max: 200
     }
       }
       })
