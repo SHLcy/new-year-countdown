@@ -30,9 +30,8 @@ setTimeout(() => {
   countdown.style.display = 'flex';
 }, 1000);
 function autoPlayAudio1() {
-  document.addEventListener("WeixinJSBridgeReady", function() {
-    document.getElementById('bgmusic').play();
-  }, false);
+  document.getElementById('bgmusic').play();
+
 }
 // Run every second
 setInterval(updateCountdown, 1000);
@@ -197,25 +196,26 @@ function startSnow () {
 }
 
 function onLoad() {
-  startSnow()
-  // document.getElementById('btn').onclick = () => {
+  document.addEventListener("WeixinJSBridgeReady", function() {
+    document.getElementById('bgmusic').play();
+  }, false);
+  document.getElementById('btn').onclick = () => {
+    startSnow()
+    autoPlayAudio1()
+    const h1Box = document.getElementsByTagName('h1')[0]
+      h1Box.className = 'h1Animation'
+      setInterval(() => {
+        if (h1Box.innerHTML.startsWith('Lcy')) {
+          h1Box.innerHTML = 'lcy祝您新年快乐'
+        }else if (h1Box.innerHTML.startsWith('lcy祝您新年快乐')) {
+          h1Box.innerHTML = 'Lcy wish you a happy new year'
+        }
+      }, 6000)
+      document.getElementById('countdown').className = 'countdown countdownAnimation'
+      document.getElementById('btn').style.display = 'none'
+      startFirework()
+  }
 
-  //   // startMusic()
-  // }
-  document.getElementById('bgmusic').play();
-  autoPlayAudio1()
-  const h1Box = document.getElementsByTagName('h1')[0]
-    h1Box.className = 'h1Animation'
-    setInterval(() => {
-      if (h1Box.innerHTML.startsWith('Lcy')) {
-        h1Box.innerHTML = 'lcy祝您新年快乐'
-      }else if (h1Box.innerHTML.startsWith('lcy祝您新年快乐')) {
-        h1Box.innerHTML = 'Lcy wish you a happy new year'
-      }
-    }, 6000)
-    document.getElementById('countdown').className = 'countdown countdownAnimation'
-    // document.getElementById('btn').style.display = 'none'
-    startFirework()
     // autoPlayAudio1()
 
 }
