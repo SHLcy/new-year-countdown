@@ -200,6 +200,7 @@ function onLoad() {
   startSnow()
   document.getElementById('btn').onclick = () => {
   document.getElementById('bgmusic').play();
+  autoPlayAudio1()
   const h1Box = document.getElementsByTagName('h1')[0]
     h1Box.className = 'h1Animation'
     setInterval(() => {
