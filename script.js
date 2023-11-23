@@ -199,7 +199,8 @@ function startSnow () {
 function onLoad() {
   startSnow()
   document.getElementById('btn').onclick = () => {
-    const h1Box = document.getElementsByTagName('h1')[0]
+  document.getElementById('bgmusic').play();
+  const h1Box = document.getElementsByTagName('h1')[0]
     h1Box.className = 'h1Animation'
     setInterval(() => {
       console.log(h1Box.innerHTML.startsWith('Lcy'))
