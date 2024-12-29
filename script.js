@@ -6,6 +6,14 @@ const countdown = document.getElementById('countdown');
 const year = document.getElementById('year');
 const currentYear = new Date().getFullYear();
 const newYearTime = new Date(`January 01 ${currentYear + 1} 00:00:00`);
+var soundLoadComplete = false; // 背景音乐是否加载完毕
+var backgroundMusicInstance = null; // 背景音乐实例
+createjs.Sound.alternateExtensions = ['mp3'];
+createjs.Sound.on('fileload', loadHandler, this);
+
+function loadHandler(event) {
+    soundLoadComplete = true;
+}
 // Set background year
 year.innerText = currentYear + 1;
 // Update countdown time
@@ -30,9 +38,7 @@ setTimeout(() => {
   countdown.style.display = 'flex';
 }, 1000);
 function autoPlayAudio1() {
-  document.addEventListener("WeixinJSBridgeReady", function() {
-    document.getElementById('bgmusic').play();
-  }, false);
+  document.getElementById('bgmusic').play();
 }
 // Run every second
 setInterval(updateCountdown, 1000);
@@ -197,26 +203,25 @@ function startSnow () {
 }
 
 function onLoad() {
-  startSnow()
-  // document.getElementById('btn').onclick = () => {
-
-  //   // startMusic()
-  // }
-  document.getElementById('bgmusic').play();
-  autoPlayAudio1()
-  const h1Box = document.getElementsByTagName('h1')[0]
-    h1Box.className = 'h1Animation'
-    setInterval(() => {
-      if (h1Box.innerHTML.startsWith('Lcy')) {
-        h1Box.innerHTML = 'FoloToy 祝您新年快乐'
-      }else if (h1Box.innerHTML.startsWith('FoloToy 祝您新年快乐')) {
-        h1Box.innerHTML = 'FoloToy wish you a happy new year'
-      }
-    }, 6000)
-    document.getElementById('countdown').className = 'countdown countdownAnimation'
-    // document.getElementById('btn').style.display = 'none'
-    startFirework()
+  
+  document.getElementById('btn').onclick = () => {
+    startSnow()
     autoPlayAudio1()
+    const h1Box = document.getElementsByTagName('h1')[0]
+      h1Box.className = 'h1Animation'
+      setInterval(() => {
+        if (h1Box.innerHTML.startsWith('FoloToy')) {
+          h1Box.innerHTML = 'FoloToy 祝您新年快乐'
+        }else if (h1Box.innerHTML.startsWith('FoloToy 祝您新年快乐')) {
+          h1Box.innerHTML = `FoloToy Wish You A Happy New Year`
+        }
+      }, 6000)
+      document.getElementById('countdown').className = 'countdown countdownAnimation'
+      document.getElementById('btn').style.display = 'none'
+      startFirework()
+  }
+
+    // autoPlayAudio1()
 
 }
 
