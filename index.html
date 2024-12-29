@@ -5,16 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="./icon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css" />
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script src="https://unpkg.com/fireworks-js@2.x/dist/index.umd.js"></script>
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
     <title>新年倒计时</title>
+    <script>
+     document.addEventListener(
+    'WeixinJSBridgeReady',
+    function() {
+        // 关键代码。下面这句 registerSound 必须写在 WeixinJSBridgeReady 回调函数内才行，
+        // createjs.Sound.play 就会无效
+        createjs.Sound.registerSound('bgcc.mp3', 'sound'); 
+        var intInstance = setInterval(function() {
+            if (soundLoadComplete) {
+                clearInterval(intInstance);
+                backgroundMusicInstance = createjs.Sound.play('sound'); // soundjs 执行播放命令
+            }
+        }, 10);
+    },
+    false
+);
+    </script>
   </head>
   <body>
-  <!-- <div class="button" id="btn">
-    <p>lcy 呈上</p>
-  </div> -->
-  <audio src="1909756841.mp3" id="bgmusic" hidden></audio>
+  <div class="button" id="btn">
+    <p>开启新一年</p>
+  </div>
+  <audio src="bacc.mp3" id="bgmusic" hidden></audio>
     <div id="year" class="year"></div>
     <!--    <embed src="./Auld%20Lang%20Syne.mp3" hidden="true" autoplay="true" loop="true" >-->
     <h1>FoloToy Wish You A Happy New Year</h1>
