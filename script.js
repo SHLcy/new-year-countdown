@@ -208,9 +208,9 @@ function onLoad() {
     h1Box.className = 'h1Animation'
     setInterval(() => {
       if (h1Box.innerHTML.startsWith('Lcy')) {
-        h1Box.innerHTML = 'lcy祝您新年快乐'
-      }else if (h1Box.innerHTML.startsWith('lcy祝您新年快乐')) {
-        h1Box.innerHTML = 'Lcy wish you a happy new year'
+        h1Box.innerHTML = 'FoloToy 祝您新年快乐'
+      }else if (h1Box.innerHTML.startsWith('FoloToy 祝您新年快乐')) {
+        h1Box.innerHTML = 'FoloToy wish you a happy new year'
       }
     }, 6000)
     document.getElementById('countdown').className = 'countdown countdownAnimation'
