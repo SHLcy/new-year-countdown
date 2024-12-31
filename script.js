@@ -210,10 +210,10 @@ function onLoad() {
     const h1Box = document.getElementsByTagName('h1')[0]
       h1Box.className = 'h1Animation'
       setInterval(() => {
-        if (h1Box.innerHTML.startsWith('FoloToy')) {
-          h1Box.innerHTML = 'FoloToy 祝您新年快乐'
-        }else if (h1Box.innerHTML.startsWith('FoloToy 祝您新年快乐')) {
-          h1Box.innerHTML = `FoloToy Wish You A Happy New Year`
+        if (h1Box.innerHTML.indexOf('新年')>0) {
+          h1Box.innerHTML = 'FoloToy Wish You A Happy New Year'
+        }else {
+          h1Box.innerHTML = `FoloToy 祝您新年快乐`
         }
       }, 6000)
       document.getElementById('countdown').className = 'countdown countdownAnimation'
